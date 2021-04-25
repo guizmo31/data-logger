@@ -7,10 +7,10 @@
       ],
 
     "transitions": [
-    { "label": "start", "from": "none", "to": "DISTANCE", "meta":"toto" , "frequency": "5000" },
-    { "label": "dist100",  "from": "DISTANCE",  "to": "SPEED" },
-    { "label": "speed5down", "from": "SPEED",  "to": "ANGLE" },
-    { "label": "speed5up", "from": "ANGLE", "to": "SPEED" },
-    { "label": "angle200",  "from": "ANGLE", "to": "DISTANCE" }
+    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "meta":"toto" , "frequency": "5000" },
+    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED" },
+    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE" },
+    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED" },
+    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE" }
   ]
 }
