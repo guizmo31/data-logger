@@ -1,13 +1,13 @@
 {
     "states": [
-        { "id": "OFF", "label": "OFF", "init": 1},
+        { "id": "none", "label": "OFF", "init": 1},
         { "id": "DISTANCE", "label":  "DISTANCE" },
         { "id": "SPEED", "label": "SPEED"},
         { "id": "ANGLE", "label": "ANGLE"}
       ],
 
     "transitions": [
-    { "label": "start", "from": "OFF", "to": "DISTANCE", "meta":"toto" , "frequency": "5000" },
+    { "label": "start", "from": "none", "to": "DISTANCE", "meta":"toto" , "frequency": "5000" },
     { "label": "dist100",  "from": "DISTANCE",  "to": "SPEED" },
     { "label": "speed5down", "from": "SPEED",  "to": "ANGLE" },
     { "label": "speed5up", "from": "ANGLE", "to": "SPEED" },
