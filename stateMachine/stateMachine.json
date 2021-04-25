@@ -1,16 +1,16 @@
 {
     "states": [
-        { "id": 1, "label": "OFF", "init": 1},
-        { "id": 2, "label":  "DISTANCE" },
-        { "id": 3, "label": "SPEED"},
-        { "id": 4, "label": "ANGLE"}
+        { "id": "OFF", "label": "OFF", "init": 1},
+        { "id": "DISTANCE", "label":  "DISTANCE" },
+        { "id": "SPEED", "label": "SPEED"},
+        { "id": "ANGLE", "label": "ANGLE"}
       ],
 
     "transitions": [
-    { "label": "start", "from": 1, "to": 2, "meta":"toto" , "frequency": "5000" },
-    { "label": "dist100",  "from": 2,  "to": 3 },
-    { "label": "speed5down", "from": 3,  "to": 4 },
-    { "label": "speed5up", "from": 4, "to": 3 },
-    { "label": "angle200",  "from": 4, "to": 2 }
+    { "label": "start", "from": "OFF", "to": "DISTANCE", "meta":"toto" , "frequency": "5000" },
+    { "label": "dist100",  "from": "DISTANCE",  "to": "SPEED" },
+    { "label": "speed5down", "from": "SPEED",  "to": "ANGLE" },
+    { "label": "speed5up", "from": "ANGLE", "to": "SPEED" },
+    { "label": "angle200",  "from": "ANGLE", "to": "DISTANCE" }
   ]
 }
