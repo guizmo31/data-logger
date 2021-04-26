@@ -7,11 +7,11 @@
       ],
 
     "transitions": [
-    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "meta":"toto" , "frequency": "5000" },
-    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED" },
-    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE" },
-    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED" },
-    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE" }
+    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "meta":"toto" },
+    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "frequency": "5000" },
+    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000" },
+    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000" },
+    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000" }
   ],
 
   "mapping": {
