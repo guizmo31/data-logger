@@ -24,6 +24,16 @@
           "type": "ON_LOGIC",
           "logic": {"<" : [ { "var" : "speed" }, 5 ]},
           "frequency": "1000"
+      },
+      "speed5up": {
+          "type": "ON_LOGIC",
+          "logic": {">" : [ { "var" : "speed" }, 5 ]},
+          "frequency": "1000"
+      },
+      "angle200": {
+          "type": "ON_LOGIC",
+          "logic": {">" : [ { "var" : "angle" }, 200 ]},
+          "frequency": "500"
       }
     },
     
