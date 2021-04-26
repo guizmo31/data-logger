@@ -1,0 +1,36 @@
+{
+    "states": [
+        { "id": "none", "label": "OFF", "init": 1},
+        { "id": "DISTANCE", "label":  "DISTANCE" },
+        { "id": "SPEED", "label": "SPEED"},
+        { "id": "ANGLE", "label": "ANGLE"}
+      ],
+
+    "transitions": [
+    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "meta":"toto" },
+    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "trigger": "dist100", "frequency": "5000" },
+    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000" },
+    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000" },
+    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000" }
+  ],
+
+    "triggers": {
+      "dist100": {
+          "type": "ON_LOGIC",
+          "logic": {">" : [ { "var" : "distance" }, 100 ]},
+          "frequency": "5000"
+      }
+    },
+    
+  "mapping": {
+    "none": 0,
+    "DISTANCE": 1, 
+    "SPEED": 2,
+    "ANGLE": 4,
+    "start": 0,
+    "dist100": 1,
+    "speed5down" : 2,
+    "speed5up": 3,
+    "angle200": 4 
+  }
+}
