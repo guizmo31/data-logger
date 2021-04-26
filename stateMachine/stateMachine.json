@@ -12,5 +12,17 @@
     { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE" },
     { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED" },
     { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE" }
-  ]
+  ],
+
+  "mapping": {
+    "none": 0,
+    "DISTANCE": 1, 
+    "SPEED": 2,
+    "ANGLE": 4,
+    "start": 0,
+    "dist100": 1,
+    "speed5down" : 2,
+    "speed5up": 3,
+    "angle200": 4 
+  }
 }
