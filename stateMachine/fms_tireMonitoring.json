@@ -19,6 +19,11 @@
           "type": "ON_LOGIC",
           "logic": {">" : [ { "var" : "distance" }, 100 ]},
           "frequency": "5000"
+      },
+      "speed5down": {
+          "type": "ON_LOGIC",
+          "logic": {"<" : [ { "var" : "speed" }, 5 ]},
+          "frequency": "1000"
       }
     },
     
