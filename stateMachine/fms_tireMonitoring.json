@@ -28,11 +28,11 @@
       ],
 
     "transitions": [
-    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "meta":"toto" },
-    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "trigger": "dist100", "frequency": "5000" },
-    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000" },
-    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000" },
-    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000" }
+    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "action":null },
+    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "trigger": "dist100", "action":null, "frequency": "5000" },
+    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000", "action":null },
+    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000", "action":null },
+    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000", "action":"capture_AVM" }
   ],
 
     "triggers": {
@@ -56,6 +56,24 @@
           "logic": {">" : [ { "var" : "angle" }, 200 ]},
           "frequency": "500"
       }
+    },
+    
+    "actions": {
+      "capture_AVM": {
+          "type" : "upload",
+          "data": {
+              "type": "ANDROID_SYST_PROP",
+              "name": "PERF_ODOMETER"
+              },
+              "speed": {
+                  "type": "ANDROID_SYST_PROP",
+                  "name": "PERF_VEHICLE_SPEED"
+              },
+              "angle": {
+                  "type": "ANDROID_VENDOR_PROP",
+                  "name": "WHEEL_ANGLES_4WS"
+              }
+        }
     },
     
   "mapping": {
