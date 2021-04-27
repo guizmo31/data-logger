@@ -27,7 +27,7 @@
 
     "transitions": [
     { "name": "start", "label": "start", "from": "none", "to": "ON", "action":null },
-    { "name": "full", "label": "full",  "from": "ON", "to": "ON", "action":"capture_AVM" }
+    { "name": "full", "label": "full",  "from": "ON", "to": "ON", "action":"capture" }
   ],
 
     "triggers": {
