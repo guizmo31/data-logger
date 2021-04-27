@@ -6,9 +6,19 @@
     "applicability" : "MTC Equation => Camera Type == AVM",
     
     "inputs" : [
-        ]
-    
-    "outputs": 
+      "distance": {
+          "type": "ANDROID_SYST_PROP",
+          "name": "PERF_ODOMETER"
+      },
+      "speed": {
+          "type": "ANDROID_SYST_PROP",
+          "name": "PERF_VEHICLE_SPEED"
+      },
+      "angle": {
+          "type": "ANDROID_VENDOR_PROP",
+          "name": "WHEEL_ANGLES_4WS"
+      }
+    ],
     
     "states": [
         { "id": "none", "label": "OFF", "init": 1},
