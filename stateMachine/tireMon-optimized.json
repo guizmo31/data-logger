@@ -29,32 +29,36 @@
 
     "transitions": [
     { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "action":null },
-    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "trigger": "dist100", "action":null, "frequency": "5000" },
-    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000", "action":null },
-    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000", "action":null },
-    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000", "action":"capture" }
+    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED" },
+    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE" },
+    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED" },
+    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE" }
   ],
 
     "triggers": {
       "dist100": {
           "type": "ON_DELTA",
           "logic": {">" : [ { "var" : "distance" }, 100 ]},
-          "frequency": "5000"
+          "frequency": "5000",
+          "action":null
       },
       "speed5down": {
           "type": "ON_LOGIC",
           "logic": {"<" : [ { "var" : "speed" }, 5 ]},
-          "frequency": "1000"
+          "frequency": "1000",
+          "action":null
       },
       "speed5up": {
           "type": "ON_LOGIC",
           "logic": {">" : [ { "var" : "speed" }, 5 ]},
-          "frequency": "500"
+          "frequency": "500",
+          "action":null
       },
       "angle200": {
           "type": "ON_LOGIC",
           "logic": {">" : [ { "var" : "angle" }, 200 ]},
-          "frequency": "500"
+          "frequency": "500",
+          "action":"capture"
       }
     },
     
