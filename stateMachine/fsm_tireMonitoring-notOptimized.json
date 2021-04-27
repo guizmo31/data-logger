@@ -1,0 +1,90 @@
+{
+    "name" : "Tire Monitoring - optimized",
+    
+    "description" : "Capture DATA when (LAST AVM Picture > 100 Km) AND ( (SPEED is in [0..5 Km/h]) AND (TIRE_ANGLE > 200°))",
+    
+    "applicability" : "MTC Equation => Camera Type == AVM",
+    
+    "inputs" : {
+      "distance": {
+          "type": "ANDROID_SYST_PROP",
+          "name": "PERF_ODOMETER"
+      },
+      "speed": {
+          "type": "ANDROID_SYST_PROP",
+          "name": "PERF_VEHICLE_SPEED"
+      },
+      "angle": {
+          "type": "ANDROID_VENDOR_PROP",
+          "name": "WHEEL_ANGLES_4WS"
+      }
+    },
+    
+    "states": [
+        { "id": "none", "label": "OFF", "init": 1},
+        { "id": "DISTANCE", "label":  "DISTANCE" },
+        { "id": "SPEED", "label": "SPEED"},
+        { "id": "ANGLE", "label": "ANGLE"}
+      ],
+
+    "transitions": [
+    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "action":null },
+    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "trigger": "dist100", "action":null, "frequency": "5000" },
+    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000", "action":null },
+    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000", "action":null },
+    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000", "action":"capture_AVM" }
+  ],
+
+    "triggers": {
+      "dist100": {
+          "type": "ON_DELTA",
+          "logic": {">" : [ { "var" : "distance" }, 100 ]},
+          "frequency": "5000"
+      },
+      "speed5down": {
+          "type": "ON_LOGIC",
+          "logic": {"<" : [ { "var" : "speed" }, 5 ]},
+          "frequency": "1000"
+      },
+      "speed5up": {
+          "type": "ON_LOGIC",
+          "logic": {">" : [ { "var" : "speed" }, 5 ]},
+          "frequency": "500"
+      },
+      "angle200": {
+          "type": "ON_LOGIC",
+          "logic": {">" : [ { "var" : "angle" }, 200 ]},
+          "frequency": "500"
+      }
+    },
+    
+    "actions": {
+      "capture_AVM": {
+          "type" : "upload",
+          "data": {
+              "type": "ANDROID_SYST_PROP",
+              "name": "PERF_ODOMETER"
+              },
+              "speed": {
+                  "type": "ANDROID_SYST_PROP",
+                  "name": "PERF_VEHICLE_SPEED"
+              },
+              "angle": {
+                  "type": "ANDROID_VENDOR_PROP",
+                  "name": "WHEEL_ANGLES_4WS"
+              }
+        }
+    },
+    
+  "mapping": {
+    "none": 0,
+    "DISTANCE": 1, 
+    "SPEED": 2,
+    "ANGLE": 4,
+    "start": 0,
+    "dist100": 1,
+    "speed5down" : 2,
+    "speed5up": 3,
+    "angle200": 4 
+  }
+}
