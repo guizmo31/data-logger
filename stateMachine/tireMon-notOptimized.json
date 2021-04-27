@@ -26,8 +26,8 @@
       ],
 
     "transitions": [
-    { "name": "start", "label": "start", "from": "none", "to": "ON", "action":null },
-    { "name": "full", "label": "full",  "from": "ON", "to": "ON", "action":"capture" }
+    { "name": "start", "label": "start", "from": "none", "to": "ON" },
+    { "name": "full", "label": "full",  "from": "ON", "to": "ON" }
   ],
 
     "triggers": {
@@ -40,7 +40,8 @@
                   {">" : [ { "var" : "angle" }, 200 ]}
                   ]
               }, 
-          "frequency": "1000"
+          "frequency": "1000",
+          "action": "capture"
       }
     },
     
