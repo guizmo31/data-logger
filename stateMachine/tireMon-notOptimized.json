@@ -1,5 +1,5 @@
 {
-    "name" : "Tire Monitoring - optimized",
+    "name" : "Tire Monitoring - NOT optimized",
     
     "description" : "Capture DATA when (LAST AVM Picture > 100 Km) AND ( (SPEED is in [0..5 Km/h]) AND (TIRE_ANGLE > 200°))",
     
@@ -22,39 +22,25 @@
     
     "states": [
         { "id": "none", "label": "OFF", "init": 1},
-        { "id": "DISTANCE", "label":  "DISTANCE" },
-        { "id": "SPEED", "label": "SPEED"},
-        { "id": "ANGLE", "label": "ANGLE"}
+        { "id": "ON", "label":  "ON" }
       ],
 
     "transitions": [
-    { "name": "start", "label": "start", "from": "none", "to": "DISTANCE", "action":null },
-    { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "trigger": "dist100", "action":null, "frequency": "5000" },
-    { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000", "action":null },
-    { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000", "action":null },
-    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000", "action":"capture_AVM" }
+    { "name": "start", "label": "start", "from": "none", "to": "ON", "action":null },
+    { "name": "full", "label": "full",  "from": "ON", "to": "ON", "action":"capture_AVM" }
   ],
 
     "triggers": {
-      "dist100": {
-          "type": "ON_DELTA",
-          "logic": {">" : [ { "var" : "distance" }, 100 ]},
-          "frequency": "5000"
-      },
-      "speed5down": {
+      "full": {
           "type": "ON_LOGIC",
-          "logic": {"<" : [ { "var" : "speed" }, 5 ]},
+          "logic":
+              {"and" : [
+                  {">" : [ { "var" : "distance" }, 100 ]},
+                  {"<" : [ { "var" : "speed" }, 5 ]},
+                  {">" : [ { "var" : "angle" }, 200 ]}
+                  ]
+              }, 
           "frequency": "1000"
-      },
-      "speed5up": {
-          "type": "ON_LOGIC",
-          "logic": {">" : [ { "var" : "speed" }, 5 ]},
-          "frequency": "500"
-      },
-      "angle200": {
-          "type": "ON_LOGIC",
-          "logic": {">" : [ { "var" : "angle" }, 200 ]},
-          "frequency": "500"
       }
     },
     
@@ -78,13 +64,8 @@
     
   "mapping": {
     "none": 0,
-    "DISTANCE": 1, 
-    "SPEED": 2,
-    "ANGLE": 4,
+    "ON": 1,
     "start": 0,
-    "dist100": 1,
-    "speed5down" : 2,
-    "speed5up": 3,
-    "angle200": 4 
+    "full": 1
   }
 }
