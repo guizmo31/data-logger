@@ -1,4 +1,15 @@
 {
+    "name" : "Tire Monitoring"
+    
+    "description" : "Capture DATA when (LAST « AVM Picture » > 100 Km) AND ( (SPEED is in [0..5 Km/h]) AND (TIRE_ANGLE > 200°))"
+    
+    "applicability" : "MTC Equation"
+    
+    "inputs" : [
+        ]
+    
+    "outputs": 
+    
     "states": [
         { "id": "none", "label": "OFF", "init": 1},
         { "id": "DISTANCE", "label":  "DISTANCE" },
@@ -16,7 +27,7 @@
 
     "triggers": {
       "dist100": {
-          "type": "ON_LOGIC",
+          "type": "ON_DELTA",
           "logic": {">" : [ { "var" : "distance" }, 100 ]},
           "frequency": "5000"
       },
@@ -28,7 +39,7 @@
       "speed5up": {
           "type": "ON_LOGIC",
           "logic": {">" : [ { "var" : "speed" }, 5 ]},
-          "frequency": "1000"
+          "frequency": "500"
       },
       "angle200": {
           "type": "ON_LOGIC",
