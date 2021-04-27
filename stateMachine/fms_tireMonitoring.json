@@ -1,9 +1,9 @@
 {
-    "name" : "Tire Monitoring"
+    "name" : "Tire Monitoring",
     
-    "description" : "Capture DATA when (LAST « AVM Picture » > 100 Km) AND ( (SPEED is in [0..5 Km/h]) AND (TIRE_ANGLE > 200°))"
+    "description" : "Capture DATA when (LAST « AVM Picture » > 100 Km) AND ( (SPEED is in [0..5 Km/h]) AND (TIRE_ANGLE > 200°))",
     
-    "applicability" : "MTC Equation"
+    "applicability" : "MTC Equation => Camera Type == AVM",
     
     "inputs" : [
         ]
