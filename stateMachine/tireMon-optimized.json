@@ -32,7 +32,7 @@
     { "name": "dist100", "label": "dist100",  "from": "DISTANCE",  "to": "SPEED", "trigger": "dist100", "action":null, "frequency": "5000" },
     { "name": "speed5down", "label": "speed5down", "from": "SPEED",  "to": "ANGLE", "frequency": "1000", "action":null },
     { "name": "speed5up", "label": "speed5up", "from": "ANGLE", "to": "SPEED", "frequency": "1000", "action":null },
-    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000", "action":"capture_AVM" }
+    { "name": "angle200", "label": "angle200",  "from": "ANGLE", "to": "DISTANCE", "frequency": "1000", "action":"capture" }
   ],
 
     "triggers": {
