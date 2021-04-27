@@ -1,5 +1,5 @@
 {
-    "name" : "Tire Monitoring - optimized",
+    "name" : "Tire Monitoring <span style='color:green;'>- OPTIMIZED</span>",
     
     "description" : "Capture DATA when (LAST AVM Picture > 100 Km) AND ( (SPEED is in [0..5 Km/h]) AND (TIRE_ANGLE > 200°))",
     
